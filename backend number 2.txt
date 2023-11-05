@@ -1,0 +1,48 @@
+1.
+select * from employees;
+2. 2
+3. select name, salary from employees where department='Marketing' or department='Sales';
+4. select avg(salary) from employee where
+date(joined_date) >= date(now()) - interval '5' year and
+date(joined_date) < date(now());
+5. select e.name from (select employee_id,name from employee) e
+inner join (SELECT DISTINCT employee_id, 
+       FIRST_VALUE(sales) OVER (
+         PARTITION BY employee_id 
+         ORDER BY sales DESC
+       ) sales
+FROM sales_data order by sales desc limit 5) sd on sd.employee_id=e.employee_id
+group by e.name,sd.sales
+order by sd.sales desc;
+
+6. WITH top100 AS 
+(
+      SELECT 
+             salary,department 
+        FROM 
+             employee
+	group by
+		department,salary
+    ORDER BY 
+             salary DESC
+     
+),
+averageall AS 
+(
+      SELECT 
+             avg(salary) as averages
+        FROM 
+             employee
+      
+)
+SELECT 
+       avg(salary) as avgByDepartment,department
+  FROM 
+       top100,averageall
+  GROUP BY
+  	department,averages
+having avg(salary)>averages
+  ;
+
+
+
