@@ -6,12 +6,13 @@
     ## Cara Instalasi
 
     1. composer install
-    2. php artisan key:generate
-    3. sesuaikan .env database
-    4. buat database di postgresql
-    5. php artisan migrate untuk migrasi table di database postgresql
-    6. php artisan test untuk melakukan testing
-    7. php artisan serve untuk merunning aplikasi
-    8. untuk dokumentasi endpoint terdapat pada file `Waizly Employee.postman_collection.json`
+    2. copy file .env.example dan rename menjadi .env
+    3. php artisan key:generate
+    4. sesuaikan .env untuk konfigurasi database, dan JWT
+    5. buat database di postgresql
+    6. php artisan migrate untuk migrasi table di database postgresql
+    7. php artisan test untuk melakukan testing
+    8. php artisan serve untuk merunning aplikasi
+    9. untuk dokumentasi endpoint terdapat pada file `Waizly Employee.postman_collection.json`
 
 3. untuk test backend nomor 2 terdapat pada file `backend number 2.txt`
